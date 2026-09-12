@@ -6,6 +6,30 @@
 .code-tabs { display: flex; gap: 2px; padding: 8px 16px 0; background: #0f130f; border-bottom: 1px solid #252b23; }
 .code-tabs button, .filter-group button { border: 0; background: transparent; color: #737c6d; padding: 8px 12px; cursor: pointer; font: 10px "Inter", sans-serif; }
 .code-tabs button.active, .code-tabs button:hover { color: var(--accent); background: #172016; }
+.stack-lab { margin-top: 84px; border: 1px solid #303a2c; background: linear-gradient(135deg, #111711, #0c100d 65%); }
+.stack-lab-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; padding: 30px 32px 24px; border-bottom: 1px solid #293326; }
+.stack-lab-heading h3 { margin-top: 10px; font-size: 28px; }
+.lab-live { display: flex; align-items: center; gap: 7px; color: #8a9b7c; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.lab-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px var(--accent); }
+.framework-switcher { display: flex; gap: 1px; padding: 16px 32px 0; background: #0f140f; border-bottom: 1px solid #293326; }
+.framework-switcher button { display: inline-flex; align-items: center; gap: 9px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: #778271; padding: 12px 15px; cursor: pointer; font: 12px "Inter", sans-serif; transition: color .2s ease, background .2s ease, border-color .2s ease; }
+.framework-switcher button b { display: grid; place-items: center; width: 22px; height: 22px; border: 1px solid #3c4935; color: #a7b89a; font-size: 12px; font-weight: 500; }
+.framework-switcher button:hover, .framework-switcher button.active { color: var(--text); background: #182118; border-color: var(--accent); }
+.framework-switcher button.active b { color: var(--accent); border-color: var(--accent); }
+.lab-content { display: grid; grid-template-columns: .95fr 1.05fr; gap: 1px; background: #293326; }
+.lab-code { background: #0b100c; min-width: 0; }
+.lab-code-head { display: flex; justify-content: space-between; gap: 15px; padding: 14px 20px; border-bottom: 1px solid #242e24; color: #a9b7a0; font: 10px "Inter", sans-serif; }
+.lab-status { color: var(--accent); }
+.lab-code pre { min-height: 220px; margin: 0; padding: 22px 20px; overflow: auto; color: #d4ddcf; font: 11px/2 "SFMono-Regular", Consolas, monospace; }
+.lab-code code { font: inherit; }
+.lab-flow { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 28px; background: #111711; }
+.flow-node { display: grid; gap: 5px; min-width: 115px; padding: 15px; border: 1px solid #374432; background: #151d14; transition: border-color .25s ease, background .25s ease, transform .25s ease; }
+.flow-node.pulse { animation: node-pulse .5s ease both; }
+.flow-number { color: var(--accent); font: 600 9px "Inter", sans-serif; letter-spacing: 1px; }
+.flow-label { color: #e2e4d9; font: 500 13px "Fraunces", serif; }
+.flow-node small { color: #778271; font-size: 9px; }
+.flow-arrow { color: #738467; font-size: 18px; }
+@keyframes node-pulse { 50% { transform: translateY(-4px); border-color: var(--accent); background: #1b2819; } }
 .project-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 42px 0 12px; color: #777d70; font-size: 11px; }
 .filter-group { display: flex; gap: 3px; }
 .filter-group button { border: 1px solid transparent; }
@@ -30,6 +54,14 @@
   .project-toolbar { display: block; }
   .filter-group { margin-top: 12px; overflow-x: auto; padding-bottom: 4px; }
   .filter-group button { white-space: nowrap; }
+  .stack-lab-heading { display: block; padding: 24px 20px 20px; }
+  .lab-live { margin-top: 16px; }
+  .framework-switcher { padding: 12px 20px 0; overflow-x: auto; }
+  .framework-switcher button { white-space: nowrap; }
+  .lab-content { grid-template-columns: 1fr; }
+  .lab-flow { justify-content: flex-start; overflow-x: auto; padding: 20px; }
+  .flow-node { flex: 0 0 125px; }
+  .flow-arrow { flex: 0 0 auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   .command-palette, .command-dialog { transition: none; }

@@ -23,5 +23,28 @@ export const portfolioData = {
       file: "product.repository.ts",
       code: `export async function createProduct(product: Product) {\n  return database.products.create({\n    data: { ...product, createdAt: new Date() }\n  });\n}`
     }
+  },
+  frameworkLab: {
+    react: {
+      label: "React.js",
+      file: "ProductDashboard.tsx",
+      status: "component-driven",
+      flow: ["React UI", "REST API", "Firestore"],
+      code: `function ProductDashboard() {\n  const { data, isLoading } = useProducts();\n\n  if (isLoading) return <LoadingState />;\n  return <ProductTable products={data} />;\n}`
+    },
+    vue: {
+      label: "Vue.js",
+      file: "ProductDashboard.vue",
+      status: "progressive UI",
+      flow: ["Vue UI", "REST API", "MySQL"],
+      code: `<script setup>\nconst { products, loading } = useProducts();\n<\/script>\n\n<template>\n  <ProductTable :items="products" :loading="loading" />\n<\/template>`
+    },
+    node: {
+      label: "Node.js",
+      file: "products.controller.ts",
+      status: "API layer",
+      flow: ["Request", "Node.js API", "Database"],
+      code: `export async function listProducts(request, response) {\n  const products = await productService.list();\n\n  return response.json({ data: products });\n}`
+    }
   }
 };

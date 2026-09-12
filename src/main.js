@@ -28,9 +28,12 @@ function initCodeTabs() {
   const tabs = codeWindow.querySelectorAll("[data-code-tab]");
 
   const highlight = value => value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/("[^"\n]*")/g, '<span class="code-string">$1</span>')
     .replace(/(\/\/.*)/g, '<span class="code-comment">$1</span>')
-    .replace(/\b(async|function|const|await|return|export|default|new)\b/g, '<span class="code-keyword">$1</span>')
-    .replace(/("[^"\n]*")/g, '<span class="code-string">$1</span>');
+    .replace(/\b(async|function|const|await|return|export|default|new)\b/g, '<span class="code-keyword">$1</span>');
 
   tabs.forEach(tab => {
     tab.addEventListener("click", () => {
@@ -40,6 +43,41 @@ function initCodeTabs() {
       code.innerHTML = highlight(selected.code);
     });
   });
+}
+
+function initFrameworkLab() {
+  const lab = document.querySelector(".stack-lab");
+  if (!lab) return;
+
+  const buttons = lab.querySelectorAll("[data-framework]");
+  const fileName = lab.querySelector(".lab-file-name");
+  const status = lab.querySelector(".lab-status");
+  const code = lab.querySelector(".lab-code-value");
+  const flowNodes = lab.querySelectorAll(".flow-node");
+
+  const highlight = value => value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/("[^"\n]*")/g, '<span class="code-string">$1</span>')
+    .replace(/(\/\/.*)/g, '<span class="code-comment">$1</span>')
+    .replace(/\b(async|function|const|await|return|export|default|new|if)\b/g, '<span class="code-keyword">$1</span>');
+
+  const selectFramework = framework => {
+    const selected = portfolioData.frameworkLab[framework];
+    buttons.forEach(button => button.classList.toggle("active", button.dataset.framework === framework));
+    fileName.textContent = selected.file;
+    status.textContent = selected.status;
+    code.innerHTML = highlight(selected.code);
+    flowNodes.forEach((node, index) => {
+      node.querySelector(".flow-label").textContent = selected.flow[index];
+      node.classList.remove("pulse");
+      requestAnimationFrame(() => node.classList.add("pulse"));
+    });
+  };
+
+  buttons.forEach(button => button.addEventListener("click", () => selectFramework(button.dataset.framework)));
+  selectFramework("react");
 }
 
 function initProjectFilters() {
@@ -61,4 +99,5 @@ renderCommandPalette();
 initNavigation();
 initMotion();
 initCodeTabs();
+initFrameworkLab();
 initProjectFilters();
