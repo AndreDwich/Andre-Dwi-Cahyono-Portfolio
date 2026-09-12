@@ -14,7 +14,7 @@
   <meta property="og:title" content="Andre Dwi Cahyono | Junior Full Stack Developer">
   <meta property="og:description"
     content="Junior Full Stack Developer building web and Android applications from interface to data layer.">
-  <meta property="og:image" content="assets/profile.jpg">
+  <meta property="og:image" content="assets/Foto%20Lamar.jpeg">
   <meta name="twitter:card" content="summary">
 
   <link rel="icon"
@@ -29,45 +29,50 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="bg-grid"></div>
   <div class="scroll-progress"><span></span></div>
 
   <header class="navbar">
     <a class="brand" href="#home">Andre Dwi Cahyono</a>
-    <nav>
+    <nav aria-label="Primary navigation">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
+      <a href="#stack">Stack</a>
       <a href="#projects">Projects</a>
       <a href="#journey">Journey</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="nav-btn" href="#contact">Let's talk</a>
+    <a class="nav-btn" href="#contact"><span class="availability-dot"></span>Let's talk</a>
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </header>
 
-  <div class="mobile-nav">
+  <div class="mobile-nav" aria-label="Mobile navigation">
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
+    <a href="#stack">Stack</a>
     <a href="#projects">Projects</a>
     <a href="#journey">Journey</a>
     <a href="#contact">Contact</a>
   </div>
 
-  <main>
+  <main id="main-content">
     <section id="home" class="hero section">
       <div class="hero-copy reveal">
-        <div class="eyebrow"><span class="status-dot"></span>Open to software development roles</div>
-        <h1>Hi, I'm Andre.<br>I build useful<br><em>digital products.</em></h1>
+        <div class="eyebrow"><span class="status-dot"></span>Junior Full-Stack Developer · Open to work</div>
+        <h1>Building thoughtful<br><em>digital products.</em></h1>
         <p class="hero-text">
-          Junior Full Stack Developer with a background in web and mobile application
-          development. I enjoy turning ideas into functional, responsive, and maintainable
-          software while continuously learning modern technologies.
+          Informatics graduate focused on building interfaces, APIs, and data-driven
+          applications. I work across the stack with a practical, product-minded approach.
         </p>
+        <div class="hero-stack" aria-label="Current technology focus">
+          <span>React.js</span><span>TypeScript</span><span>Node.js</span><span>Firebase</span>
+        </div>
         <div class="hero-actions">
-          <a class="primary-btn" href="#projects">Explore my work</a>
-          <a class="secondary-btn" href="./assets/cv.pdf" download>Download CV</a>
+          <a class="primary-btn" href="#projects">View selected work <span aria-hidden="true">↗</span></a>
+          <a class="secondary-btn" href="./assets/cv.pdf" download>Download CV <span aria-hidden="true">↓</span></a>
         </div>
         <div class="socials">
           <a href="https://www.linkedin.com/in/andre-dwich-691143289?utm_source=share_via&utm_content=profile&utm_medium=member_android"
@@ -99,19 +104,20 @@
       </div>
       <div class="about-content">
         <p class="lead reveal">
-          I'm an <strong>Informatics Engineering graduate</strong> who enjoys building
-          applications from interface to data layer.
+          I'm an <strong>Informatics Engineering graduate</strong> building toward
+          full-stack product development.
         </p>
         <p class="reveal">
           My experience includes developing web and Android applications, working with
           databases, integrating cloud services, designing user interfaces, and solving
-          practical problems through software. I am currently strengthening my modern
-          JavaScript ecosystem skills and looking forward to growing as a full-stack engineer.
+          practical problems through software. My current focus is the modern JavaScript
+          ecosystem: React.js on the frontend, Node.js and REST APIs on the backend, and
+          reliable data workflows underneath.
         </p>
         <div class="focus-row reveal">
-          <div><strong>Frontend</strong><small>Responsive UI & UX</small></div>
-          <div><strong>Backend</strong><small>Data & service integration</small></div>
-          <div><strong>Mobile</strong><small>Android applications</small></div>
+          <div><strong>Frontend</strong><small>HTML, CSS, JavaScript</small></div>
+          <div><strong>Backend</strong><small>PHP, MySQL, REST API</small></div>
+          <div><strong>Mobile</strong><small>Kotlin, Jetpack Compose</small></div>
         </div>
       </div>
     </section>
@@ -124,33 +130,88 @@
 
       <div class="skill-grid">
         <article class="skill-card reveal">
-          <h3>Web Fundamentals</h3>
-          <p>Building responsive interfaces with a focus on semantic structure, usability, and clean implementation.</p>
-          <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <div class="skill-index">01</div>
+          <h3>Frontend Engineering</h3>
+          <p>Creating responsive, accessible interfaces with clear component structure and attention to interaction details.</p>
+          <div class="tags"><span>React.js</span><span>JavaScript</span><span>TypeScript</span><span>HTML</span><span>CSS</span></div>
         </article>
 
         <article class="skill-card reveal">
-          <h3>Data & Backend</h3>
-          <p>Working with application data, cloud databases, and database concepts for real-world application needs.</p>
-          <div class="tags"><span>Firebase</span><span>Firestore</span><span>PostgreSQL</span></div>
+          <div class="skill-index">02</div>
+          <h3>Backend & APIs</h3>
+          <p>Learning to design practical services, connect application flows, and move data safely between client and server.</p>
+          <div class="tags"><span>Node.js</span><span>PHP</span><span>REST API</span><span>Express.js</span></div>
         </article>
 
         <article class="skill-card reveal">
+          <div class="skill-index">03</div>
+          <h3>Data & Cloud</h3>
+          <p>Working with authentication, cloud-backed data, relational databases, and media storage for real application needs.</p>
+          <div class="tags"><span>Firebase</span><span>Firestore</span><span>MySQL</span><span>Cloudinary</span></div>
+        </article>
+
+        <article class="skill-card reveal">
+          <div class="skill-index">04</div>
           <h3>Mobile Development</h3>
           <p>Developing Android applications with modern UI patterns and cloud-backed functionality.</p>
           <div class="tags"><span>Kotlin</span><span>Jetpack Compose</span><span>Android</span></div>
         </article>
 
+        <article class="skill-card reveal">
+          <div class="skill-index">05</div>
+          <h3>Engineering Workflow</h3>
+          <p>Organizing work around readable code, version control, documentation, responsive testing, and iterative problem solving.</p>
+          <div class="tags"><span>Git</span><span>GitHub</span><span>CRUD</span><span>System Design</span></div>
+        </article>
+
         <article class="skill-card learning reveal">
-          <h3>Currently Exploring</h3>
-          <p>Expanding into the JavaScript/TypeScript full-stack ecosystem — without claiming production experience I
-            have not yet gained.</p>
-          <div class="tags"><span>React</span><span>TypeScript</span><span>Node.js</span><span>REST
-              API</span><span>Next.js</span><span>MongoDB</span></div>
+          <div class="skill-index">06 · IN PROGRESS</div>
+          <h3>Modern Full-Stack</h3>
+          <p>Growing this toolkit through focused practice and small projects, with an emphasis on understanding the fundamentals behind the tools.</p>
+          <div class="tags"><span>Next.js</span><span>MongoDB</span><span>Testing</span><span>Deployment</span></div>
         </article>
       </div>
-      <p class="skill-note reveal">Learning these technologies as part of my growth toward modern full-stack
-        development.</p>
+      <p class="skill-note reveal">A transparent snapshot of what I can apply today and what I am actively developing next.</p>
+    </section>
+
+    <section id="stack" class="section stack-showcase">
+      <div class="section-heading reveal">
+        <span>How I build</span>
+        <h2>From interface<br><i>to data layer.</i></h2>
+      </div>
+
+      <div class="code-layout">
+        <div class="code-intro reveal">
+          <p class="lead">Good products connect every layer.</p>
+          <p>I think in flows: a user action starts in the interface, travels through a clear API boundary, and ends in reliable data. This is the full-stack perspective I bring to every project.</p>
+          <div class="flow-steps">
+            <div><span>01</span><strong>Interface</strong><small>React.js · TypeScript</small></div>
+            <div><span>02</span><strong>Service</strong><small>Node.js · REST API</small></div>
+            <div><span>03</span><strong>Data</strong><small>Firebase · MySQL</small></div>
+          </div>
+        </div>
+
+        <div class="code-window reveal" aria-label="Illustrative full-stack code example">
+          <div class="code-window-bar">
+            <div class="window-dots"><i></i><i></i><i></i></div>
+            <span>product-flow.tsx</span>
+            <span class="window-status">● ready</span>
+          </div>
+          <pre><code><span class="code-comment">// A small flow from UI to API</span>
+<span class="code-keyword">async function</span> <span class="code-function">saveProduct</span>(product: Product) {
+  <span class="code-keyword">const</span> response = <span class="code-keyword">await</span> fetch(<span class="code-string">"/api/products"</span>, {
+    method: <span class="code-string">"POST"</span>,
+    body: JSON.stringify(product)
+  });
+
+  <span class="code-keyword">return</span> response.json();
+}
+
+<span class="code-comment">// API validates, then persists the data.</span>
+<span class="code-keyword">export default</span> ProductForm;</code></pre>
+          <div class="code-window-footer"><span>main</span><span>UTF-8</span><span>Full-stack workflow</span></div>
+        </div>
+      </div>
     </section>
 
     <section id="projects" class="section projects">
@@ -175,12 +236,13 @@
         </div>
         <div class="project-info">
           <span class="project-type">Final project — mobile application</span>
-          <h3>Sales & inventory system for Koperasi Merah Putih (KKMP) Kranggan</h3>
+          <h3>Sales & inventory system for KKMP Kranggan</h3>
           <p>
             Android application designed to support product management, inventory,
             sales transactions, barcode scanning, transaction history, and monthly reporting.
-            The project combines interface design, application logic, role-based access,
-            database operations, and cloud image storage.
+            I designed and built the core flows from interface to data layer: role-based
+            access, product management, barcode scanning, transaction history, reporting,
+            and cloud image storage.
           </p>
           <div class="project-tags"><span>Kotlin</span><span>Jetpack Compose</span><span>Firebase
               Firestore</span><span>Cloudinary</span><span>Barcode Scanner</span></div>
@@ -200,9 +262,8 @@
           <div class="project-info">
             <span class="project-type">Web development</span>
             <h3>Web application development</h3>
-            <p>Web development work focused on responsive layouts, structured frontend code, and practical user
-              interfaces.</p>
-            <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <p>Responsive web interfaces built around clear structure, practical interactions, and maintainable code.</p>
+            <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span></div>
           </div>
         </article>
 
@@ -214,8 +275,8 @@
           <div class="project-info">
             <span class="project-type">Database & integration</span>
             <h3>Application data management</h3>
-            <p>Database integration and data management experience using cloud and relational database technologies.</p>
-            <div class="project-tags"><span>Firestore</span><span>PostgreSQL</span><span>Firebase</span></div>
+            <p>Application data management with authentication, cloud storage, relational databases, and basic APIs.</p>
+            <div class="project-tags"><span>Firestore</span><span>MySQL</span><span>Firebase</span><span>REST API</span></div>
           </div>
         </article>
       </div>
@@ -290,7 +351,10 @@
           I'm open to software development opportunities, especially roles where I can
           contribute, learn quickly, and grow with a collaborative engineering team.
         </p>
-        <a class="contact-email" href="mailto:andredwich54@gmail.com">andredwich54@gmail.com</a>
+        <div class="contact-details">
+          <a class="contact-email" href="mailto:andredwich54@gmail.com">andredwich54@gmail.com</a>
+          <a class="contact-phone" href="tel:+628989762590">+62 898 9762 590</a>
+        </div>
         <div class="contact-links">
           <a href="https://www.linkedin.com/in/andre-dwich-691143289?utm_source=share_via&utm_content=profile&utm_medium=member_android"
             target="_blank" rel="noopener">LinkedIn</a>

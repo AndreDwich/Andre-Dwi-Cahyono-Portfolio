@@ -1,11 +1,20 @@
-// Reveal-on-scroll animation
-const observer = new IntersectionObserver((entries) => {
+// Reveal elements once, with a small stagger inside each content group.
+const revealItems = document.querySelectorAll(".reveal");
+const revealObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add("show");
-  });
-}, { threshold: 0.12 });
+    if (!entry.isIntersecting) return;
 
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    entry.target.classList.add("show");
+    observer.unobserve(entry.target);
+  });
+}, { threshold: 0.14, rootMargin: "0px 0px -5%" });
+
+revealItems.forEach((element, index) => {
+  const group = element.parentElement;
+  const groupIndex = group ? [...group.children].indexOf(element) : index;
+  element.style.setProperty("--reveal-delay", `${Math.min(groupIndex, 5) * 70}ms`);
+  revealObserver.observe(element);
+});
 
 // Smooth scroll for in-page links
 document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -35,16 +44,40 @@ menuToggle?.addEventListener("click", () => {
   menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
-// Scroll progress bar
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeMobileMenu();
+});
+
+document.addEventListener("click", event => {
+  if (!mobileNav?.classList.contains("open")) return;
+  if (!mobileNav.contains(event.target) && !menuToggle?.contains(event.target)) closeMobileMenu();
+});
+
+// Scroll progress and decorative motion share one animation frame.
 const progressBar = document.querySelector(".scroll-progress span");
-function updateProgress() {
+const navbar = document.querySelector(".navbar");
+const heroVisual = document.querySelector(".hero-visual");
+const grid = document.querySelector(".bg-grid");
+let scrollFrame;
+
+function updateScrollState() {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  if (progressBar) progressBar.style.width = pct + "%";
+  const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+
+  if (progressBar) progressBar.style.transform = `scaleX(${progress})`;
+  navbar?.classList.toggle("scrolled", scrollTop > 24);
+  heroVisual?.style.setProperty("--parallax-y", `${Math.min(scrollTop * -0.08, 0)}px`);
+  grid?.style.setProperty("--grid-shift", `${scrollTop * 0.08}px`);
+  scrollFrame = undefined;
 }
-window.addEventListener("scroll", updateProgress, { passive: true });
-updateProgress();
+
+function requestScrollUpdate() {
+  if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollState);
+}
+
+window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+updateScrollState();
 
 // Active nav link on scroll (scroll-spy)
 const sections = document.querySelectorAll("main section[id]");
